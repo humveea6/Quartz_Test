@@ -21,16 +21,12 @@ public class HelloSchedule {
                 withIdentity("myjob","group1").
                 build();
 
-        date.setTime(date.getTime()+4000);
 
-        SimpleTrigger trigger = (SimpleTrigger) TriggerBuilder
+        CronTrigger trigger = (CronTrigger) TriggerBuilder
                 .newTrigger()
                 .withIdentity("mytrigger","group1")
-                .startAt(date)
                 .withSchedule(
-                        SimpleScheduleBuilder.simpleSchedule()
-                        .withIntervalInSeconds(2)
-                        .withRepeatCount(3)
+                        CronScheduleBuilder.cronSchedule("0/5 17 10 * * ? *")
                 )
                 .build();
 
